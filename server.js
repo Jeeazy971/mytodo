@@ -54,7 +54,7 @@ if (result.error) {
 
 // Database ----------------------------------------------------------------
 let db;
-if (process.env.CLOUDANT_USERNAME !== undefined)  {
+if (process.env.CLOUDANT_USERNAME !== undefined) {
   db = require('./lib/db-cloudant')(process.env);
 } else if (process.env.MONGO_USERNAME !== undefined || process.env.SCALINGO_MONGO_URL) {
   db = require('./lib/db-mongo')(process.env);
@@ -62,6 +62,7 @@ if (process.env.CLOUDANT_USERNAME !== undefined)  {
   db = require('./lib/in-memory')();
 }
 console.log('Using', db.type());
+
 
 app.use(bodyParser.urlencoded({
   extended: false
